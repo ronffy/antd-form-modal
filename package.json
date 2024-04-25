@@ -1,0 +1,31 @@
+{
+  "name": "antd-form-modal",
+  "version": "0.1.0",
+  "description": "Convenient handling of form addition, editing, viewing, and other status in modal",
+  "main": "index.tsx",
+  "typings": "index.tsx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ronffy/antd-form-modal.git"
+  },
+  "keywords": [
+    "antd",
+    "form",
+    "modal"
+  ],
+  "files": [
+    "index.tsx",
+    "handleForm",
+    "index.less"
+  ],
+  "author": "ronffy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ronffy/antd-form-modal/blob/master/issues"
+  },
+  "homepage": "https://github.com/ronffy/antd-form-modal/blob/master#README.md",
+  "dependencies": {
+    "antd": "^5.14.2",
+    "react": "^18.1.0"
+  }
+}

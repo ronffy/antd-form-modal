@@ -1,0 +1,22 @@
+.inlineForm {
+  display: flex;
+  gap: 16px;
+  :global {
+    .ant-form-item {
+      width: calc(50% - 8px);
+      margin-inline-end: 0;
+    }
+  }
+}
+
+.displayNone {
+  display: none;
+}
+
+.modal {
+  :global {
+    .ant-modal-body {
+      padding-top: 15px;
+    }
+  }
+}
