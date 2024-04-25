@@ -48,8 +48,8 @@ export default function FormModal<
     setOpen(true)
   }
 
-  const handleOk = async () =>
-    form
+  const handleOk = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+   await form
       .validateFields()
       .then(async (values) => {
         await onSubmit(values)
@@ -59,9 +59,13 @@ export default function FormModal<
       .catch((error) => {
         onError?.(error)
       })
+    modalProps?.onOk?.(e)
+  }
+    
 
-  const handleCancel = () => {
+  const handleCancel = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setOpen(false)
+    modalProps?.onCancel?.(e)
   }
 
   const handleForm = (
@@ -99,10 +103,10 @@ export default function FormModal<
         cancelText="取消"
         destroyOnClose
         maskClosable={false}
-        onOk={handleOk}
-        onCancel={handleCancel}
         width={600}
         {...modalProps}
+        onCancel={handleCancel}
+        onOk={handleOk}
         className={`${styles.modal} ${modalProps?.className || ''}`}
       >
         {renderForm ? renderForm(handleForm) : handleForm}

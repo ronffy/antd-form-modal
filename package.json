@@ -1,6 +1,6 @@
 {
   "name": "antd-form-modal",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Convenient handling of form addition, editing, viewing, and other status in modal",
   "main": "index.tsx",
   "typings": "index.tsx",
@@ -24,7 +24,7 @@
     "url": "https://github.com/ronffy/antd-form-modal/blob/master/issues"
   },
   "homepage": "https://github.com/ronffy/antd-form-modal/blob/master#README.md",
-  "dependencies": {
+  "peerDependencies": {
     "antd": "^5.14.2",
     "react": "^18.1.0"
   }
