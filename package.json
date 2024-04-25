@@ -1,6 +1,6 @@
 {
   "name": "antd-form-modal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convenient handling of form addition, editing, viewing, and other status in modal",
   "main": "index.tsx",
   "typings": "index.tsx",
@@ -15,7 +15,7 @@
   ],
   "files": [
     "index.tsx",
-    "handleForm",
+    "handleForm.tsx",
     "index.less"
   ],
   "author": "ronffy",
