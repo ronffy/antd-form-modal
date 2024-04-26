@@ -95,17 +95,20 @@ export default function HandleForm<
     >
       <Row gutter={24}>
         {formItems
-          .map((item) =>
-            item.delete?.(form) ? null : (
+          .map((item) => {
+            const {delete: deleteFn, ...itemProps} = item;
+            
+            return deleteFn?.(form) ? null : (
               <Col
                 span={span}
                 key={String(item.name)}
                 className={item.hidden ? styles.displayNone : ''}
               >
                 {/* @ts-ignore */}
-                <Form.Item<T> {...item}>{item.children}</Form.Item>
+                <Form.Item<T> {...itemProps}>{item.children}</Form.Item>
               </Col>
             )
+          }
           )
           .filter((v) => !!v)}
       </Row>
