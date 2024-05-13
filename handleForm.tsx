@@ -10,6 +10,9 @@ export type HandleFormItemType<K> = {
   rules?: Rule[]
   hidden?: boolean
   children?: React.ReactNode
+  addonAfter?: React.ReactNode
+  addonBefore?: React.ReactNode
+  placeholder?: string
   delete?: (form: FormInstance) => boolean
 }
 
@@ -52,12 +55,15 @@ export default function HandleForm<
   }, [actionType, values])
 
   const formItems = useMemo(() => {
-    return items?.map((item) => ({
-      label: dictionary[item.name as K],
+    return items?.map(({ name, addonAfter, addonBefore, placeholder, ...item }) => ({
+      name,
+      label: dictionary[name as K],
       children: (
         <Input
-          key={String(item.name)}
-          placeholder={`请输入${dictionary[item.name as K]}`}
+          key={String(name)}
+          addonAfter={addonAfter}
+          addonBefore={addonBefore}
+          placeholder={placeholder || `请输入${dictionary[name as K]}`}
         />
       ),
       ...item,
