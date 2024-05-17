@@ -1,5 +1,6 @@
-import React, { PropsWithChildren, useState } from 'react'
-import { Button, ColProps, Form, FormProps, Modal, ModalProps } from 'antd'
+import React, { PropsWithChildren, forwardRef, useImperativeHandle, useState } from 'react'
+import { forwardrefHOC } from 'react-foundations-utils'
+import { Button, ColProps, Form, FormInstance, FormProps, Modal, ModalProps } from 'antd'
 import HangarForm, { HandleFormItemType } from './handleForm'
 import styles from './index.less'
 
@@ -25,7 +26,12 @@ export const ActTypeTextMap = {
   preview: '查看',
 }
 
-export default function FormModal<
+export type FormModalRef = {
+  form: FormInstance
+  setOpen: (open: boolean) => void
+}
+
+function FormModal<
   T extends Record<string, any>,
   K extends string
 >({
@@ -40,9 +46,11 @@ export default function FormModal<
   onError,
   renderForm,
   ...formProps
-}: FormModalProps<T, K>) {
+}: FormModalProps<T, K>, ref: React.Ref<FormModalRef>) {
   const [open, setOpen] = useState(false)
   const [form] = Form.useForm()
+
+
 
   const handleClickBtn = () => {
     setOpen(true)
@@ -67,6 +75,11 @@ export default function FormModal<
     setOpen(false)
     modalProps?.onCancel?.(e)
   }
+
+  useImperativeHandle(ref, () => ({
+    form,
+    setOpen,
+  }), [form])
 
   const handleForm = (
     <HangarForm<T, K>
@@ -114,3 +127,5 @@ export default function FormModal<
     </>
   )
 }
+
+export default forwardrefHOC(FormModal)

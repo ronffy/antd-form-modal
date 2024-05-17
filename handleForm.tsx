@@ -102,7 +102,7 @@ export default function HandleForm<
       <Row gutter={24}>
         {formItems
           .map((item) => {
-            const {delete: deleteFn, ...itemProps} = item;
+            const {delete: deleteFn, children, ...itemProps} = item;
             
             return deleteFn?.(form) ? null : (
               <Col
@@ -111,7 +111,7 @@ export default function HandleForm<
                 className={item.hidden ? styles.displayNone : ''}
               >
                 {/* @ts-ignore */}
-                <Form.Item<T> {...itemProps}>{item.children}</Form.Item>
+                <Form.Item<T> {...itemProps}>{children}</Form.Item>
               </Col>
             )
           }

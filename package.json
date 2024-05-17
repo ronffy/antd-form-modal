@@ -1,6 +1,6 @@
 {
   "name": "antd-form-modal",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Convenient handling of form addition, editing, viewing, and other status in modal",
   "main": "index.tsx",
   "typings": "index.tsx",
@@ -27,5 +27,8 @@
   "peerDependencies": {
     "antd": "^5.14.2",
     "react": "^18.1.0"
+  },
+  "dependencies": {
+    "react-foundations-utils": "^0.1.0"
   }
 }
